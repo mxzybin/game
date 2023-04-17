@@ -1,0 +1,239 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the common layout of the site
+// -----------------------------------------------------------------------------
+
+body {
+  background-color: $body-bg;
+}
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+// skip links
+.accessibility {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+}
+
+.game {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 15px 15px 60px;
+  display: flex;
+  background-color: $gray;
+
+  @include media('>=desktop') {
+    padding: 30px;
+  }
+
+  &-popup {
+    transform: translate(-50%, -50%) scale(0);
+    visibility: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 370px;
+    width: 100%;
+    padding: 20px 15px;
+    border: 3px solid $white;
+    background-color: $gray;
+    border-radius: 6px;
+    font-size: 18px;
+    transition: $transition-duration-base;
+    color: $white;
+    text-align: center;
+    
+    span {
+      font-weight: 700;
+      font-size: 2em;
+    }
+
+    &.show {
+      transform: translate(-50%, -50%) scale(1);
+      visibility: visible;
+      z-index: 9;
+    }
+  }
+
+  &-inner {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    min-height: 100%;
+    width: 100%;
+
+    @include media('>=desktop') {
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+  }
+
+  &-field {
+    flex: 1 1 auto;
+  }
+
+  &-arrows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 50px 0 0;
+
+    @include media('>=desktop') {
+      margin: 0 auto;
+      padding: 0;
+      transform: rotate(45deg);
+      margin: 0 -5px;
+      width: 110px;
+      height: 110px;
+      align-self: center;
+    }
+
+    span {
+      flex: 1 1 auto;
+
+      @include media('>=desktop') {
+        display: none;
+      }
+    }
+  }
+
+  &-arrow {
+    width: 50px;
+    height: 50px;
+    background-color: $blue-light;
+    border: 3px solid $white;
+    border-radius: 8px;
+    color: $white;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: darken($blue-light, 5%);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    i {
+      @include media('>=desktop') {
+        display: block;
+        transform: rotate(-45deg) !important;
+      }
+    }
+
+    &.__up {
+      @include media('>=desktop') {
+        order: 0;
+      }
+    }
+
+    &.__right {
+      @include media('>=desktop') {
+        order: 1;
+      }
+    }
+
+    &.__down {
+      @include media('>=desktop') {
+        order: 3;
+      }
+    }
+
+    &.__left {
+      @include media('>=desktop') {
+        order: 2;
+      }
+    }
+  }
+
+  &-controls {
+    margin: 0 0 50px;
+  }
+}
+
+.screen {
+  max-width: 344px;
+  margin: 0 auto;
+  border: 5px solid $gray-light;
+  border-radius: 12px;
+  height: 100%;
+  // background-color: $blue;
+  background-color: $blue-light;
+  padding: 10px;
+  color: $white;
+  position: relative;
+  overflow: hidden;
+}
+
+.barrier {
+  font-size: 0;
+  position: absolute;
+  bottom: 100%;
+}
+
+.ship {
+  width: 50px;
+  position: absolute;
+  bottom: 10px;
+  // top: 10px;
+  left: 152px;
+  transition: 0.1s ease-in-out;
+  // transition: 0.1s;
+  font-size: 0;
+}
+
+.tie {
+  width: 50px;
+}
+
+.asteroid-fire {
+  width: 60px;
+}
+
+.asteroid-fire-blue {
+  width: 55px;
+}
+
+.asteroid-small {
+  width: 30px;
+}
+
+.potato {
+  width: 40px;
+}
+
+.tomato {
+  width: 40px;
+}
+
+.score {
+  color: $white;
+
+  span {
+    font-size: 2em;
+    font-weight: 700;
+  }
+}
